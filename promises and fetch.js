@@ -14,15 +14,11 @@ rejected -> catch
 promise = new Promise((resolve, reject) => {
 	resolve();
 });
-promise
-	.then(() => console.log('Task finished!'))
-	.then(() => console.log('2nd Callback get!!'))
-	.catch(() => console.log('Something goes wrong!'));
 
 //OR
 promise = new Promise((resolve, reject) => {
 	reject();
-});
+}); 
 promise
 	.then(() => console.log('Task finished!'))
 	.then(() => console.log('2nd Callback get!!'))
@@ -30,6 +26,7 @@ promise
 
 //Async Promises
 promise = new Promise((resolve, reject) => {
+	//Simulate a long running process here
 	setTimeout(() => {
 		resolve();
 	}, 3000);
@@ -39,7 +36,7 @@ promise
 	.then(() => console.log('2nd Callback get!!'))
 	.catch(() => console.log('Something goes wrong!'));
 
-//Fetch function 
+// New Fetch helper function 
 url = "https://jsonplaceholder.typicode.com/posts/";
 //Try to get some data but only header
 fetch(url)
@@ -57,7 +54,7 @@ fetch(url)
 	.then(response => console.log(response))
 	.catch(error => console.log('BAD', error));
 
-//Only the server is  
+//Only when the server is a non-existing url
 url = "https://jsonplaceholder.typicode123.com/posts/123456"; 
 //This time it catch error because server can't be hit
 fetch(url)
